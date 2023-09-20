@@ -1,4 +1,3 @@
-C:\Users\is22-11\Desktop\test1\obj\Debug\net6.0\test1.csproj.AssemblyReference.cache
 C:\Users\is22-11\Desktop\test1\obj\Debug\net6.0\test1.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\is22-11\Desktop\test1\obj\Debug\net6.0\test1.AssemblyInfoInputs.cache
 C:\Users\is22-11\Desktop\test1\obj\Debug\net6.0\test1.AssemblyInfo.cs
