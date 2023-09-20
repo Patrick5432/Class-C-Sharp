@@ -51,8 +51,60 @@
 
 // =========================================================
 
+//Класс родитель героев
 
-//Класс родитель
+public class Hero
+{
+    int lvl;
+    int hp;
+    int damage;
+    int armor;
+
+    public Hero (int lvl, int hp, int damage, int armor)
+    {
+        this.lvl = lvl;
+        this.hp = hp;
+        this.damage = damage;
+        this.armor = armor;
+    }
+
+    public int GetHp()
+    {
+        return hp;
+    }
+
+    public int GetArmor()
+    {
+        return lvl*armor;
+    }
+}
+
+// Подкласс "Воин"
+
+public class Warrior : Hero
+{
+    int lvl;
+    int hp;
+    int damage;
+    int armor;
+
+    public Warrior (int lvl, int hp, int damage, int armor) : base (lvl, hp, damage, armor)
+    {
+        this.lvl = lvl;
+        this.hp = hp;
+        this.damage = damage;
+        this.armor = armor;
+    }
+
+    public int GetMoreDamage()
+    {
+        return lvl*damage*5;
+    }
+
+}
+
+
+//Класс родитель щитов
 
 public class Shield
 {
@@ -111,12 +163,19 @@ public class LiteShield : Shield
     }
 }
 
+
+//Класс для запуска кода
+
 public class Start
 {
     public static void Main()
     {
+        Warrior warrior = new Warrior(31, 16, 43, 23);
         LiteShield shield = new LiteShield(13, 1265);
-        Console.WriteLine(shield.SpecialSpellArmor());
+        int allArmor = warrior.GetArmor() + shield.SpecialSpellArmor();
+        Console.WriteLine("Hp: " + warrior.GetHp());
+        Console.WriteLine("Armor: " + allArmor);
+        Console.WriteLine("Damage: " + warrior.GetMoreDamage());
     }
 }
 
