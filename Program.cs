@@ -1,58 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
-// public class Person {
-//     string name;
-//     string age;
-
-//     public Person(string name, string age) {
-//         this.name = name;
-//         this.age = age;
-//     }
-
-//     public string NameAndAge() {
-//         return name + " " + age;
-//     }
-// }
-
-// public class Simple {
-//     public static void Main() {
-//         Person human = new Person("1", "2");
-//         Console.WriteLine(human.NameAndAge());
-//     }
-// }
-
-// =========================================================
-
-// public class Hero {
-//     int lvl;
-//     int armor;
-//     int damage;
-
-//     public Hero(int lvl, int armor, int damage) {
-//         this.lvl = lvl;
-//         this.armor = armor;
-//         this.damage = damage;
-//     }
-
-//     public int GetDamage() {
-//         return lvl * damage;
-//     }
-
-//     public int GetArmor() {
-//         return armor;
-//     }
-// }
-
-// public class Simple {
-//     public static void Main() {
-//         Hero firstHero = new Hero(2, 13, 12);
-//         Console.WriteLine("Урон: " + firstHero.GetDamage() + " Защита: " + firstHero.GetArmor());
-//     }
-// }
-
-// =========================================================
 
 //Класс родитель героев
 
+using System.Runtime.CompilerServices;
+/*!
+    \brief Родительский класс, в котором перечислены все основные параметры
+    
+    В данном классе указываются основные параметры, при помощи которых
+    можно расчитать урон, хп и броню героя
+*/
 public class Hero
 {
     int lvl;
@@ -68,10 +24,18 @@ public class Hero
         this.armor = armor;
     }
 
+/*!
+    \brief Выводит хп героя
+*/
+
     public int GetHp()
     {
         return hp;
     }
+
+/*!
+    \brief Выводит броню героя
+*/
 
     public int GetArmor()
     {
@@ -81,6 +45,12 @@ public class Hero
 
 // Подкласс "Воин"
 
+/*!
+    \brief Подкласс "Воин"
+
+    Этот подкласс имеет дополнительные методы, которые могут изменить
+    характеристики урон, хп или броня
+*/
 public class Warrior : Hero
 {
     int lvl;
@@ -96,6 +66,10 @@ public class Warrior : Hero
         this.armor = armor;
     }
 
+    /*!
+        \brief Увеличивает урон героя в 5 раз
+    */
+
     public int GetMoreDamage()
     {
         return lvl*damage*5;
@@ -106,33 +80,79 @@ public class Warrior : Hero
 
 //Класс родитель щитов
 
-public class Shield
+/*!
+    \brief Класс щиты
+
+    В щитах перечисляются параметры, которые в будущем можно суммировать с защитой героя
+*/
+public class Shield : IComparable<Shield>
 {
+    string type;
     int armor;
     int price;
 
-    public Shield (int armor, int price)
+    public Shield (string type, int armor, int price)
     {
+        this.type = type;
         this.armor = armor;
         this.price = price;
     }
 
+    /*!
+        \brief Интерфейс сортировки щитов по броне
+    */
+
+    public int CompareTo(Shield? s)
+    {
+        if (s is null) throw new ArgumentException("Некорректные данные");
+        return s.armor - armor;
+        }
+        /*!
+        \brief Выводит цену щита
+        */
     public int GetPrice()
     {
         return price;
+    }
+
+    /*!
+        \brief Выводит броню щита
+    */
+
+    public int GetArmor()
+    {
+        return armor;
+    }
+
+    /*!
+        \brief Выводит тип щита
+    */
+
+    public string GetType()
+    {
+        return type;
     }
 }
 
 //Подкласс "Тяжёлый щит"
 
+/*!
+    \brief Подкласс "Тяжёлый щит"
+
+    Этот подкласс имеет дополнительные методы, которые могут изменить
+    характеристики урона и брони
+*/
+
 public class HeavyShield : Shield
 {
+    string type;
     int armor;
     int price;
     int damage;
 
-    public HeavyShield (int armor, int damage, int price) : base (armor, price)
+    public HeavyShield (string type, int armor, int damage, int price) : base (type, armor, price)
     {
+        this.type = type;
         this.armor = armor;
         this.damage = damage;
         this.price = price;
@@ -146,13 +166,22 @@ public class HeavyShield : Shield
 
 //Подкласс "Лёгкий щит"
 
+/*!
+    \brief Подкласс "Лёгкий щит"
+
+    Этот подкласс имеет дополнительные методы, которые могут изменить
+    характеристики урона и брони
+*/
+
 public class LiteShield : Shield
 {
+    string type;
     int armor;
     int price;
 
-    public LiteShield(int armor, int price) : base (armor, price)
+    public LiteShield(string type, int armor, int price) : base (type, armor, price)
     {
+        this.type = type;
         this.armor = armor;
         this.price = price;
     }
@@ -166,70 +195,33 @@ public class LiteShield : Shield
 
 //Класс для запуска кода
 
+/*!
+    \brief Класс в котором запускаются процессы кода
+*/
+
 public class Start
 {
     public static void Main()
     {
         Warrior warrior = new Warrior(31, 16, 43, 23);
-        LiteShield shield = new LiteShield(13, 1265);
-        int allArmor = warrior.GetArmor() + shield.SpecialSpellArmor();
+        LiteShield shield1 = new LiteShield("Лёгкий", 13, 1265);
+        LiteShield shield2 = new LiteShield("Лёгкий", 1343, 12653214);
+        HeavyShield shield3 = new HeavyShield("Тяжёлый", 124124, 123123, 321423);
+
+        Shield[] shields = {shield1, shield2, shield3};
+
+        int allArmor = warrior.GetArmor() + shield1.SpecialSpellArmor();
+
+        Array.Sort(shields);
+
+        foreach(Shield shield in shields)
+        {
+            Console.WriteLine(
+                $"Тип:{shield.GetType()} Броня:{shield.GetArmor()} Цена:{shield.GetArmor()}"
+            );
+        }
         Console.WriteLine("Hp: " + warrior.GetHp());
         Console.WriteLine("Armor: " + allArmor);
         Console.WriteLine("Damage: " + warrior.GetMoreDamage());
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //Подкласс "Тяжёлый щит"
-
-// public class HeavyShield : Shield {
-
-//     int damage;
-
-//     public HeavyShield(int armor, int damage, int price) : base (armor, price) {
-//         this.armor = armor;
-//         this.damage = damage;
-//         this.price = price;
-//     }
-    
-//     public int SpecialSpell() {
-//         Console.WriteLine("1231");
-//         return armor * damage;
-//     }
-// }
-
-// //Подкласс "Лёгкий щит"
-
-// public class LiteShield : Shield {
-//     int armor;
-//     int price;
-
-//     public LiteShield(int armor, int price) {
-//         this.armor = armor;
-//         this.price = price;
-//     }
-
-//     public int SpecialSpellLite() {
-//         return armor + 10;
-//     }
-// }
-
-// //Класс для запуска
-
-// public class Simple {
-//     public static void Main() {
-//         HeavyShield Hero = new HeavyShield(12, 31, 32);
-//         Console.WriteLine(Hero.SpecialSpell());
-//     }
-// }

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\is22-11\\Desktop\\test1\\test1.csproj": {}
+    "/home/user/Class-C-Sharp/test1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\is22-11\\Desktop\\test1\\test1.csproj": {
+    "/home/user/Class-C-Sharp/test1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\is22-11\\Desktop\\test1\\test1.csproj",
+        "projectUniqueName": "/home/user/Class-C-Sharp/test1.csproj",
         "projectName": "test1",
-        "projectPath": "C:\\Users\\is22-11\\Desktop\\test1\\test1.csproj",
-        "packagesPath": "C:\\Users\\is22-11\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\is22-11\\Desktop\\test1\\obj\\",
+        "projectPath": "/home/user/Class-C-Sharp/test1.csproj",
+        "packagesPath": "/home/user/.nuget/packages/",
+        "outputPath": "/home/user/Class-C-Sharp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\is22-11\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/user/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,12 +48,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[6.0.23, 6.0.23]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.112/RuntimeIdentifierGraph.json"
         }
       }
     }

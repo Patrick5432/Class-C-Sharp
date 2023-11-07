@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AydA141buP4itqA3D6LRCpFYGKe4AFOGWzm2OsUnMnibkTk9xMU98cuokaUCTpjxzBTq80Fi/ew71ammIO+Tdw==",
+  "dgSpecHash": "EA1X2zVoeZhcmt7MiRjUoLh6VzAvWtenRvIPdI4aaEnw4aILs38HvHoUTtl+iyniz1p6rnE6iHXPDwiyubL21Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\is22-11\\Desktop\\test1\\test1.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/user/Class-C-Sharp/test1.csproj",
+  "expectedPackageFiles": [
+    "/home/user/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.23/microsoft.netcore.app.host.linux-x64.6.0.23.nupkg.sha512"
+  ],
   "logs": []
 }
